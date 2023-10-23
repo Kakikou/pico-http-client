@@ -18,7 +18,6 @@ int handle_socket(http_client_t *http_client, url_t *url, void *data, int data_s
         // Logs has been pushed by the api
         printf("Not connected\n");
         pico_free_tcp_client(tcp_client);
-        pico_free_tcp_client(tcp_client);
         return 0;
     }
     pico_tcp_write(tcp_client, data, data_size);

@@ -38,8 +38,7 @@ void on_error(void *arg, err_t err) {
     if (tcp_client != NULL) {
         if (tcp_client->pcb) {
             if (err != ERR_ABRT) {
-                printf("Error received from tcp socket. err = %s\n",
-                       lwip_strerr(err));
+                printf("Error received from tcp socket. err = %s\n", lwip_strerr(err));
                 tcp_abort(tcp_client->pcb);
             }
         }
@@ -180,7 +179,8 @@ int pico_is_tcp_connected(tcp_client_t *tcp_client) {
         case CLOSED:
         case CLOSING:
         case CLOSE_WAIT:
-            ret = tcp_client->rx_buffer == NULL ? -1 : 1; // force caller to read the buffer even if the socket is closed
+            ret = tcp_client->rx_buffer == NULL ? -1
+                                                : 1; // force caller to read the buffer even if the socket is closed
             break;
         default:
             ret = 1;
@@ -225,7 +225,7 @@ int pico_tcp_read(tcp_client_t *tcp_client) {
     int readed = 0;
     if (tcp_client->rx_buffer != NULL) {
         if (tcp_client->data) {
-            // data already readed we have to concat it
+            // data already read we have to concat it
             char *tmp = (char *) realloc(tcp_client->data, tcp_client->data_size + tcp_client->rx_buffer_size);
             if (tmp == NULL) {
                 tcp_abort(tcp_client->pcb);

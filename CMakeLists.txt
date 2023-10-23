@@ -10,7 +10,7 @@ if ("${TARGET}" STREQUAL "PICO")
 endif ()
 
 
-project(http_example C CXX ASM)
+project(PicoHttpClient C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
