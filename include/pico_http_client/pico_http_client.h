@@ -16,6 +16,7 @@ extern "C" {
 #include "unix/socket_impl.h"
 #endif
 
+/* Update also method2string accordingly */
 enum HTTPMethod {
     OPTIONS = 0,
     GET,
@@ -36,6 +37,7 @@ typedef struct http_client {
     char *headers;
     size_t header_len;
     char *url;
+    char *post;
     void *data;
     int data_size;
 } http_client_t;
@@ -49,6 +51,10 @@ typedef struct {
 } url_t;
 
 http_client_t *new_http_client(const char *url);
+
+int stringlog10(const char *s);
+
+int add_post(http_client_t *http_client, const char *post);
 
 int add_header(http_client_t *http_client, const char *key, const char *value);
 
