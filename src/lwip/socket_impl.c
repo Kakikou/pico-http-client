@@ -115,7 +115,7 @@ tcp_client_t *pico_new_tcp_client() {
 
 void pico_free_tcp_client(tcp_client_t *tcp_client) {
     cyw43_arch_lwip_begin();
-    // do not free data since the pointer has been passed to the caller
+    // do not free data since the pointer has been forwarded to the caller
     if (tcp_client->pcb) { tcp_abort(tcp_client->pcb); }
     free(tcp_client->rx_buffer);
     free(tcp_client);

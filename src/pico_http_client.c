@@ -13,7 +13,7 @@ static const char *method2string(enum HTTPMethod method) {
 static url_t parse_url(const char *url) {
     url_t result;
 
-    char scheme[10], domain[64], port[64], path[1024], query[1024];
+    char scheme[10]="", domain[64]="", port[64]="", path[1024]="", query[1024]="";
     if (sscanf(url, "%9[^:]://%63[^:?]:%63[^/?]%1023[^?]%1023s", scheme, domain, port, path, query) < 4) {
         sscanf(url, "%9[^:]://%63[^:/?]%1023[^?]%1023s", scheme, domain, path, query);
         port[0] = '8';
